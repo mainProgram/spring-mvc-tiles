@@ -21,7 +21,7 @@ public class LoginController {
 
     private static final String REDIRECT_TO_LOGIN = "redirect:/";
 
-    @GetMapping("/")
+    @GetMapping(name = "index", value ="/")
     public String showLoginPage() {
         return "index";
     }
