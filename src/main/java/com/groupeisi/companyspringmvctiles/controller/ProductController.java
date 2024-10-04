@@ -39,7 +39,7 @@ public class ProductController {
             logger.error("ProductController - Erreur lors de la récupération des produits", e);
         }
 
-        return "product/products";
+        return "products";
     }
 
     @PostMapping("/products")
@@ -58,6 +58,7 @@ public class ProductController {
 
         try {
             boolean productSaved = productService.save(productDto);
+
             if (productSaved) {
                 logger.info("ProductController - Produit enregistré avec succès");
             } else {

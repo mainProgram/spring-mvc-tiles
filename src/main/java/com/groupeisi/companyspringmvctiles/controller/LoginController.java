@@ -19,11 +19,11 @@ public class LoginController {
 
     private final IAccountUserService accountUserService = new AccountUserService();
 
-    private static final String REDIRECT_TO_LOGIN = "redirect:/";
+    private static final String REDIRECT_TO_LOGIN = "login";
 
-    @GetMapping(name = "index", value ="/")
+    @GetMapping(name = "login", value ="/")
     public String showLoginPage() {
-        return "index";
+        return REDIRECT_TO_LOGIN;
     }
 
     @PostMapping("/login")
@@ -39,14 +39,12 @@ public class LoginController {
 
             if (accountUserDto.isPresent()) {
                 session.setAttribute("username", userName);
-                return "redirect:/welcome";
+                return "welcome";
             } else {
-
                 return REDIRECT_TO_LOGIN;
             }
         } catch (Exception e) {
             logger.error("Erreur lors de la connexion : {}", e.getMessage());
-
             return REDIRECT_TO_LOGIN;
         }
     }

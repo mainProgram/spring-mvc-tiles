@@ -40,7 +40,7 @@ public class PurchasesController {
             logger.error("Erreur lors de la récupération des données", e);
         }
 
-        return "purchase/purchases";
+        return "purchases";
     }
 
     @PostMapping("/purchases")

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class WelcomeController {
-    @GetMapping(name = "welcome", value = "/welcome")
-    public String welcome() {
-        return "pages/welcome";
+    @GetMapping("/welcome")
+    public String showWelcome() {
+        return "welcome";
     }
 }

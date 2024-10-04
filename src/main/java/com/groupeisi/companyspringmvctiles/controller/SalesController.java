@@ -54,7 +54,7 @@ public class SalesController {
             logger.error("Erreur lors de la récupération de la liste des ventes", e);
         }
 
-        return "sale/sales";
+        return "sales";
     }
 
     @PostMapping("/sales")
