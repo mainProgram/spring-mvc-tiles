@@ -56,7 +56,7 @@ public class SpringWebConfig implements WebMvcConfigurer {
     public TilesViewResolver tilesViewResolver() {
         final TilesViewResolver resolver = new TilesViewResolver();
         resolver.setViewClass(TilesView.class);
-        resolver.setOrder(1);
+        resolver.setOrder(0);
         return resolver;
     }
 
