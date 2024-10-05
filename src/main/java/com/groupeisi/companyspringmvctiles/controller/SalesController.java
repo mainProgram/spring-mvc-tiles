@@ -1,6 +1,7 @@
 package com.groupeisi.companyspringmvctiles.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,18 +66,16 @@ public class SalesController {
 
         logger.debug("Paramètres reçus : productRef={}, quantity={}", productRef, quantity);
 
+        ProductDto productDto = new ProductDto();
+
+        productDto.setRef(productRef);
         SalesDto salesDto = new SalesDto();
         salesDto.setQuantity(quantity);
+        salesDto.setProduct(productDto);
+        salesDto.setDateP(new Date());
 
         try {
-            Optional<ProductDto> product = productService.findByRef(productRef);
-            if (product.isPresent()) {
-                salesDto.setProduct(product.get());
-                salesService.save(salesDto);
-                logger.info("Vente enregistrée avec succès");
-            } else {
-                logger.error("Produit non trouvé avec la référence : {}", productRef);
-            }
+            salesService.save(salesDto);
         } catch (Exception e) {
             logger.error("Erreur lors de l'enregistrement de la vente", e);
         }

@@ -20,7 +20,11 @@ import java.util.Optional;
 public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    private IProductService productService = new ProductService();
+    private IProductService productService;
+
+    public ProductController(){
+        this.productService = new ProductService();
+    }
 
     @GetMapping("/products")
     public String showProducts(Model model) {
