@@ -2,39 +2,43 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
-
 <tiles-definitions>
 
     <!-- LAYOUTS -->
     <definition name="baseLayout" template="/WEB-INF/jsp/baseLayout.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
+        <put-attribute name="css" value=""/>
     </definition>
 
     <definition name="login" extends="baseLayout">
         <put-attribute name="title" value="Login page" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/pages/login.jsp"/>
+        <put-attribute name="css" value="resources/public/css/login.css"/>
     </definition>
-
 
     <definition name="welcome" extends="baseLayout">
         <put-attribute name="title" value="Welcome page" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/pages/welcome.jsp"/>
+        <put-attribute name="css" value=""/>
     </definition>
 
     <definition name="products" extends="baseLayout">
         <put-attribute name="title" value="Produits" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/pages/products.jsp"/>
+        <put-attribute name="css" value=""/>
     </definition>
 
     <definition name="sales" extends="baseLayout">
         <put-attribute name="title" value="Sales" type="string"/>
-        <put-attribute name="content" value="/WEB-INF/jsp/pages/sales.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/salesit .jsp"/>
+        <put-attribute name="css" value=""/>
     </definition>
 
     <definition name="purchases" extends="baseLayout">
         <put-attribute name="title" value="Purchases" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/pages/purchases.jsp"/>
+        <put-attribute name="css" value=""/>
     </definition>
 
 </tiles-definitions>
