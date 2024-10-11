@@ -12,7 +12,6 @@ import com.groupeisi.companyspringmvctiles.dto.SalesDto;
 import com.groupeisi.companyspringmvctiles.entities.ProductEntity;
 import com.groupeisi.companyspringmvctiles.entities.Sales;
 import com.groupeisi.companyspringmvctiles.exception.NotAvailableQuantityException;
-import com.groupeisi.companyspringmvctiles.mapper.ProductMapper;
 import com.groupeisi.companyspringmvctiles.mapper.SalesMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,31 +44,31 @@ public class SalesService implements ISalesService {
         logger.info("SalesService - Tentative d'enregistrement d'une vente : {}", salesDto);
 
         Sales salesEntity = SalesMapper.toSalesEntity(salesDto);
-        Optional<ProductEntity> product = productDao.findByRef(salesDto.getProduct().getRef());
+        ProductDto productDto = salesDto.getProduct();
 
         try {
 
-            if (product.isPresent()) {
-                ProductEntity productEntity = product.get();
-                double newStockValue = productEntity.getStock() - salesDto.getQuantity();
-                productEntity.setStock(newStockValue);
-                boolean productUpdated = productDao.update(productEntity);
-                salesEntity.setProduct(productEntity);
-                boolean salesSaved = salesDao.save(salesEntity);
-                logger.info("SalesService - Enregistrement de la vente réussie : {}", salesSaved);
+            double newStockValue = productDto.getStock() - salesDto.getQuantity();
+            logger.debug("SalesService - Calcul de la nouvelle valeur de stock : {}", newStockValue);
 
-                logger.info("SalesService - Mise à jour du produit réussie : {}", productUpdated);
-                if (!productUpdated) {
-                    logger.warn("PurchasesService - Échec de la mise à jour du stock pour le produit avec ref : {}");
-                    return false;
-                }
+            productDto.setStock(newStockValue);
+
+            boolean productUpdated = productService.update(productDto);
+            logger.info("SalesService - Mise à jour du produit réussie : {}", productUpdated);
+
+            if (!productUpdated) {
+                logger.warn("PurchasesService - Échec de la mise à jour du stock pour le produit avec ref : {}", productDto.getRef());
+                return false;
             }
 
+            boolean saleSaved = salesDao.save(salesEntity);
+            logger.info("SaleService - Enregistrement de la vente réussie : {}", saleSaved);
+
+            return saleSaved;
         } catch (Exception e) {
-            logger.error("SalesService - Erreur lors de l'enregistrement de la vente", e);
+            logger.error("PurchasesService - Erreur lors de l'enregistrement de la vente", e);
             return false;
         }
-        return true;
     }
 
 

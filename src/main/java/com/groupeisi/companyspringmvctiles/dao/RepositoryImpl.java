@@ -55,6 +55,7 @@ public class RepositoryImpl<T> implements Repository<T> {
     @Override
     public List<T> list(T t) {
         // Utilisation de l'API criteria
+        session = HibernateUtil.getSessionFactory().openSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<T> cq = (CriteriaQuery<T>) cb.createQuery(t.getClass());
         Root<T> root = (Root<T>) cq.from(t.getClass());

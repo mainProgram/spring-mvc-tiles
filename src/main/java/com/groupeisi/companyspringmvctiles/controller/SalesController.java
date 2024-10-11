@@ -1,7 +1,6 @@
 package com.groupeisi.companyspringmvctiles.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,25 +33,12 @@ public class SalesController {
 
         try {
             Optional<List<SalesDto>> sales = salesService.findAll();
+            model.addAttribute("salesList", sales.orElse(new ArrayList<>()));
+
             Optional<List<ProductDto>> products = productService.findAll();
-
-            if (sales.isPresent()) {
-                logger.info("Liste des ventes récupérée avec succès");
-                model.addAttribute("salesList", sales.get());
-            } else {
-                logger.info("Aucune vente trouvée");
-                model.addAttribute("salesList", new ArrayList<SalesDto>());
-            }
-
-            if (products.isPresent()) {
-                logger.info("Liste des produits récupérée avec succès");
-                model.addAttribute("productList", products.get());
-            } else {
-                logger.info("Aucun produit trouvé");
-                model.addAttribute("productList", new ArrayList<ProductDto>());
-            }
+            model.addAttribute("productList", products.orElse(new ArrayList<>()));
         } catch (Exception e) {
-            logger.error("Erreur lors de la récupération de la liste des ventes", e);
+            logger.error("Erreur lors de la récupération des données", e);
         }
 
         return "sales";
@@ -66,18 +52,23 @@ public class SalesController {
 
         logger.debug("Paramètres reçus : productRef={}, quantity={}", productRef, quantity);
 
-        ProductDto productDto = new ProductDto();
+        Optional<ProductDto> productOptional = productService.findByRef(productRef);
 
-        productDto.setRef(productRef);
-        SalesDto salesDto = new SalesDto();
-        salesDto.setQuantity(quantity);
-        salesDto.setProduct(productDto);
-        salesDto.setDateP(new Date());
+        if (productOptional.isPresent()) {
+            ProductDto productDto = productOptional.get();
 
-        try {
-            salesService.save(salesDto);
-        } catch (Exception e) {
-            logger.error("Erreur lors de l'enregistrement de la vente", e);
+            SalesDto salesDto = new SalesDto();
+            salesDto.setProduct(productDto);
+            salesDto.setQuantity(quantity);
+
+            try {
+                salesService.save(salesDto);
+                logger.info("Achat enregistré avec succès");
+            } catch (Exception e) {
+                logger.error("Erreur lors de l'enregistrement de l'achat", e);
+            }
+        } else {
+            logger.error("Produit non trouvé avec la référence ");
         }
 
         return "redirect:/sales";
