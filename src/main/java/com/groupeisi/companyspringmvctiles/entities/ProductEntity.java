@@ -23,6 +23,10 @@ public class ProductEntity implements Serializable {
     @OneToMany(mappedBy = "product")
     private List<Sales> sales;
 
+    @ManyToOne
+    @JoinColumn(name = "panier_id")
+    private PanierEntity panier;
+
     public ProductEntity() {
     }
 
