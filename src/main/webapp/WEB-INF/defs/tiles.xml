@@ -64,4 +64,10 @@
         <put-attribute name="content" value="/WEB-INF/jsp/front/paniers.jsp"/>
         <put-attribute name="css" value=""/>
     </definition>
+
+    <definition name="detailsPaniers" extends="frontBaseLayout">
+        <put-attribute name="title" value="Détails Panier" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/detailsPaniers.jsp"/>
+        <put-attribute name="css" value=""/>
+    </definition>
 </tiles-definitions>

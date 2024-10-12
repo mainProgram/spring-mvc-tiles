@@ -10,4 +10,7 @@ public interface IPanierService {
     Optional<List<PanierDto>> findAll();
 
     boolean save(PanierDto panierDto);
+
+    Optional<PanierDto> findById(Long id);
+
 }

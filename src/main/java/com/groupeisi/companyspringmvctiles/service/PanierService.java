@@ -4,7 +4,9 @@ import com.groupeisi.companyspringmvctiles.dao.IPanierDao;
 import com.groupeisi.companyspringmvctiles.dao.PanierDao;
 import com.groupeisi.companyspringmvctiles.dto.PanierDto;
 import com.groupeisi.companyspringmvctiles.entities.PanierEntity;
+import com.groupeisi.companyspringmvctiles.entities.ProductEntity;
 import com.groupeisi.companyspringmvctiles.mapper.PanierMapper;
+import com.groupeisi.companyspringmvctiles.mapper.ProductMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,16 @@ public class PanierService implements IPanierService{
 
     @Override
     public boolean save(PanierDto panierDto) {
-        return false;
+        PanierEntity panierEntity = PanierMapper.toPanierEntity(panierDto);
+        return panierDao.save(panierEntity);
     }
+
+    @Override
+    public Optional<PanierDto> findById(Long id) {
+        PanierEntity panier = new PanierEntity();
+        Optional<PanierEntity> panierEntity = Optional.ofNullable(panierDao.get(id, panier));
+        return panierEntity.map(PanierMapper::toPanierDto);
+    }
+
+
 }

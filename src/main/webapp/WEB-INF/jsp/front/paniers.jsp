@@ -29,12 +29,44 @@
                                     <tr>
                                         <td>${panier.id}</td>
                                         <td>${panier.date}</td>
-                                        <td>${panier.client.id}</td>
-                                        <td></td>
+                                        <td>${panier.client.firstName} ${panier.client.lastName}</td>
+                                        <td>
+                                            <a href="paniers/details/${panier.id}">
+                                                <i class="fas fa-eye" data-toggle="tooltip" title="Voir plus"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Ajout de paniers</h5>
+                        <form action="paniers" method="post">
+                            <div class="mb-3">
+                                <label for="inputClient" class="form-label">Client</label>
+                                <select name="client_id" class="form-control" id="inputClient" required>
+                                    <c:forEach items="${clientList}" var="client">
+                                        <option value="${client.id}">${client.firstName} ${client.lastName}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="inputProduct" class="form-label">Produit(s)</label>
+                                <select name="products" multiple class="form-control" id="inputProduct" required>
+                                    <c:forEach items="${productList}" var="product">
+                                        <option value="${product.ref}">${product.ref} - ${product.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        </form>
                     </div>
                 </div>
             </div>

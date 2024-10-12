@@ -14,17 +14,14 @@ public class PanierDto {
 
     private List<ProductDto> products;
 
-    private List<CommandeDto> commandes;
-
     public PanierDto() {
     }
 
-    public PanierDto(Long id, Date date, ClientDto client, List<ProductDto> products, List<CommandeDto> commandes) {
+    public PanierDto(Long id, Date date, ClientDto client, List<ProductDto> products) {
         this.id = id;
         this.date = date;
         this.client = client;
         this.products = products;
-        this.commandes = commandes;
     }
 
     public Long getId() {
@@ -57,13 +54,5 @@ public class PanierDto {
 
     public void setProducts(List<ProductDto> products) {
         this.products = products;
-    }
-
-    public List<CommandeDto> getCommandes() {
-        return commandes;
-    }
-
-    public void setCommandes(List<CommandeDto> commandes) {
-        this.commandes = commandes;
     }
 }

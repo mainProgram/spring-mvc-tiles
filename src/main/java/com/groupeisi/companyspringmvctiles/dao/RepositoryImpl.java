@@ -1,12 +1,14 @@
 package com.groupeisi.companyspringmvctiles.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import com.groupeisi.companyspringmvctiles.config.HibernateUtil;
+import com.groupeisi.companyspringmvctiles.entities.PanierEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -64,10 +66,8 @@ public class RepositoryImpl<T> implements Repository<T> {
 
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public T get(long id, T t) {
         return (T) session.get(t.getClass(), id);
     }
-
 }

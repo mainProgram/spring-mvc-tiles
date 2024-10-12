@@ -1,0 +1,34 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: fazeyna
+  Date: 12/10/2024
+  Time: 11:20
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Détails du panier</h5>
+                            <p><span class="fw-bold">Id:</span> ${panier.id}</p>
+                            <p><span class="fw-bold">Date de création:</span> ${panier.date}</p>
+                            <p><span class="fw-bold">Client:</span> ${panier.client.firstName} ${panier.client.lastName}</p>
+                            <p><span class="fw-bold">Produits:</span> </p>
+                            <ul>
+                                <c:forEach items="${panier.products}" var="product">
+                                    <li>${product.name}</li>
+                                </c:forEach>
+                            </ul>
+                        <p class="text-end mt-5" ><a href="/companyspringmvctiles/paniers">Retour à la liste</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

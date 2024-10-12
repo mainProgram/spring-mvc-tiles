@@ -18,7 +18,6 @@ public class PanierMapper {
         panierEntity.setId(panierDto.getId());
         panierEntity.setDate(panierDto.getDate());
         panierEntity.setClient(ClientMapper.toClientEntity(panierDto.getClient()));
-        panierEntity.setCommandes(CommandeMapper.toListCommandeEntity(panierDto.getCommandes()));
         panierEntity.setProducts(ProductMapper.toListProductEntity(panierDto.getProducts()));
 
         return panierEntity;
@@ -31,7 +30,6 @@ public class PanierMapper {
         panierDto.setId(panierEntity.getId());
         panierDto.setClient(ClientMapper.toClientDto(panierEntity.getClient()));
         panierDto.setDate(panierEntity.getDate());
-        panierDto.setCommandes(CommandeMapper.toListCommandeDto(panierEntity.getCommandes()));
         panierDto.setProducts(ProductMapper.toListProductDto(panierEntity.getProducts()));
 
         return panierDto;

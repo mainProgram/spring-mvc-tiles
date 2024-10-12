@@ -10,10 +10,10 @@ public class PanierEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
 

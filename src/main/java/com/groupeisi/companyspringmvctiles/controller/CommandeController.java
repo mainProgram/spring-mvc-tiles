@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/commandes")
 public class CommandeController {
 
     private static final Logger logger = LoggerFactory.getLogger(CommandeController.class);
@@ -19,7 +21,7 @@ public class CommandeController {
         this.commandeService = new CommandeService();
     }
 
-    @GetMapping("/commandes")
+    @GetMapping("")
     public String showAll(Model model) {
         logger.info(" - Méthode GET appelée pour afficher les commandes");
 
