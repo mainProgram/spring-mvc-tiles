@@ -23,9 +23,8 @@ public class ProductEntity implements Serializable {
     @OneToMany(mappedBy = "product")
     private List<Sales> sales;
 
-    @ManyToOne
-    @JoinColumn(name = "panier_id")
-    private PanierEntity panier;
+    @ManyToMany(mappedBy = "products")
+    private List<PanierEntity> paniers;
 
     public ProductEntity() {
     }
@@ -77,4 +76,13 @@ public class ProductEntity implements Serializable {
     public void setSales(List<Sales> sales) {
         this.sales = sales;
     }
+
+    public List<PanierEntity> getPaniers() {
+        return paniers;
+    }
+
+    public void setPaniers(List<PanierEntity> paniers) {
+        this.paniers = paniers;
+    }
+
 }

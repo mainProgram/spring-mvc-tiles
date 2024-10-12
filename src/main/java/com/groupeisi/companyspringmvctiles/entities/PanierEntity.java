@@ -20,6 +20,21 @@ public class PanierEntity {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private ClientEntity client;
+
+    @ManyToMany
+    @JoinTable(
+            name = "panier_products",
+            joinColumns = @JoinColumn(name = "panier_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_ref")
+    )
+    private List<ProductEntity> products;
+
+    @OneToMany(mappedBy = "panier")
+    private List<CommandeEntity> commandes;
+
     public Long getId() {
         return id;
     }
@@ -52,10 +67,6 @@ public class PanierEntity {
         this.client = client;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private ClientEntity client;
-
     public List<ProductEntity> getProducts() {
         return products;
     }
@@ -64,9 +75,4 @@ public class PanierEntity {
         this.products = products;
     }
 
-    @OneToMany(mappedBy = "panier")
-    private List<ProductEntity> products;
-
-    @OneToMany(mappedBy = "panier")
-    private List<CommandeEntity> commandes;
 }
