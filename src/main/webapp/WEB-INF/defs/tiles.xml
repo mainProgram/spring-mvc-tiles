@@ -16,6 +16,7 @@
         <put-attribute name="content" value=""/>
         <put-attribute name="css" value=""/>
     </definition>
+    <!-- LAYOUTS END -->
 
     <definition name="login" extends="baseLayout">
         <put-attribute name="title" value="Login page" type="string"/>

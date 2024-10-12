@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div>
     <div class="container mt-5">
         <div class="row">
@@ -20,7 +21,7 @@
                                 <label for="input" class="form-label">Panier</label>
                                 <select name="panier_id" class="form-control" id="input" required>
                                     <c:forEach items="${panierList}" var="panier">
-                                        <option value="${panier.id}">${panier.id} - ${panier.date}</option>
+                                        <option value="${panier.id}">${panier.id} - <fmt:formatDate value="${panier.date}" pattern="dd-MM-yyyy"/></option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -46,7 +47,7 @@
                             <c:forEach items="${commandeList}" var="commande">
                                 <tr>
                                     <td>${commande.id}</td>
-                                    <td>${commande.date}</td>
+                                    <td><fmt:formatDate value="${commande.date}" pattern="dd-MM-yyyy"/></td>
                                     <td>
                                         <a href="commandes/details/${commande.panier.id}">
                                             <i class="fas fa-eye" data-toggle="tooltip" title="Voir plus"></i>

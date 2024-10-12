@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div>
     <div class="container mt-5">
         <div class="row">
@@ -56,7 +57,9 @@
                                 <c:forEach items="${paniersList}" var="panier">
                                     <tr>
                                         <td>${panier.id}</td>
-                                        <td>${panier.date}</td>
+                                        <td>
+                                            <fmt:formatDate value="${panier.date}" pattern="dd-MM-yyyy"/>
+                                        </td>
                                         <td>${panier.client.firstName} ${panier.client.lastName}</td>
                                         <td>
                                             <a href="paniers/details/${panier.id}">
