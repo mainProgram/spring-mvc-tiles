@@ -18,7 +18,7 @@
                         <h5 class="card-title mb-3">Détails de la commande</h5>
                             <p><span class="fw-bold">Id:</span> ${commande.panier.id}</p>
                             <p><span class="fw-bold">Date de création:</span>
-                                <fmt:formatDate value="${panier.date}" pattern="dd-MM-yyyy"/>
+                                <fmt:formatDate value="${commande.date}" pattern="dd-MM-yyyy"/>
                             </p>
                             <p><span class="fw-bold">Client:</span> ${commande.panier.client.firstName} ${commande.panier.client.lastName}</p>
                             <p><span class="fw-bold">Panier:</span> ${commande.panier.id} </p>

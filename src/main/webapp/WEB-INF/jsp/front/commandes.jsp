@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Ajout de commande</h5>
-                        <form action="paniers" method="post">
+                        <form action="commandes" method="post">
                             <div class="mb-3">
                                 <label for="input" class="form-label">Panier</label>
                                 <select name="panier_id" class="form-control" id="input" required>
