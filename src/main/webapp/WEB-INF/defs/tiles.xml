@@ -11,6 +11,12 @@
         <put-attribute name="css" value=""/>
     </definition>
 
+    <definition name="frontBaseLayout" template="/WEB-INF/jsp/frontBaseLayout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="css" value=""/>
+    </definition>
+
     <definition name="login" extends="baseLayout">
         <put-attribute name="title" value="Login page" type="string"/>
         <put-attribute name="content" value="/WEB-INF/jsp/pages/login.jsp"/>
@@ -41,4 +47,21 @@
         <put-attribute name="css" value=""/>
     </definition>
 
+    <definition name="clients" extends="frontBaseLayout">
+        <put-attribute name="title" value="Clients" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/clients.jsp"/>
+        <put-attribute name="css" value=""/>
+    </definition>
+
+    <definition name="commandes" extends="frontBaseLayout">
+        <put-attribute name="title" value="Commandes" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/commandes.jsp"/>
+        <put-attribute name="css" value=""/>
+    </definition>
+
+    <definition name="paniers" extends="frontBaseLayout">
+        <put-attribute name="title" value="Paniers" type="string"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/paniers.jsp"/>
+        <put-attribute name="css" value=""/>
+    </definition>
 </tiles-definitions>

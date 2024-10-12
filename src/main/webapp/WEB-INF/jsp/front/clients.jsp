@@ -14,23 +14,23 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Liste des commandes</h5>
+                        <h5 class="card-title">Liste des clients</h5>
                         <table class="table table-striped table-hover">
                             <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Email</th>
-                            </tr>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Email</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                                <td>test</td>
-                            </tr>
+                                <tr>
+                                    <td>test</td>
+                                    <td>test</td>
+                                    <td>test</td>
+                                    <td>test</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

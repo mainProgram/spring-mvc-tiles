@@ -38,6 +38,8 @@ public class PrivateFilter implements Filter {
                 || chemin.equals("/singup") && method.equalsIgnoreCase("POST")
                 || chemin.startsWith("/public/")
                 || chemin.startsWith("/resources/")
+                || chemin.startsWith("/commandes")
+                || chemin.startsWith("/paniers")
         )
             chain.doFilter(request, response);
         else
