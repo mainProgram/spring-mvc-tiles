@@ -10,5 +10,6 @@ public interface ISalesService {
     Optional<List<SalesDto>> findAll();
 
     boolean save(SalesDto salesDto);
+
     boolean saleTransactional(Sales sales);
 }
