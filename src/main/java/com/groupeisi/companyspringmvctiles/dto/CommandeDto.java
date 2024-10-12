@@ -1,27 +1,16 @@
-package com.groupeisi.companyspringmvctiles.entities;
+package com.groupeisi.companyspringmvctiles.dto;
 
-import javax.persistence.*;
+import com.groupeisi.companyspringmvctiles.entities.PanierEntity;
+
 import java.util.Date;
 
-@Entity
-@Table(name = "commandes")
-public class CommandeEntity {
+public class CommandeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "date", nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "panier_id")
     private PanierEntity panier;
-
-    public CommandeEntity() {
-    }
 
     public Long getId() {
         return id;
@@ -47,4 +36,12 @@ public class CommandeEntity {
         this.panier = panier;
     }
 
+    public CommandeDto() {
+    }
+
+    public CommandeDto(Long id, Date date, PanierEntity panier) {
+        this.id = id;
+        this.date = date;
+        this.panier = panier;
+    }
 }

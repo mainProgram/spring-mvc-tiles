@@ -8,9 +8,6 @@ import java.util.List;
 @Table(name = "paniers")
 public class PanierEntity {
 
-    public PanierEntity() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -34,6 +31,9 @@ public class PanierEntity {
 
     @OneToMany(mappedBy = "panier")
     private List<CommandeEntity> commandes;
+
+    public PanierEntity() {
+    }
 
     public Long getId() {
         return id;

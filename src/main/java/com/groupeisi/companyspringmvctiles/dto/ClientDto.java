@@ -1,16 +1,7 @@
-package com.groupeisi.companyspringmvctiles.entities;
+package com.groupeisi.companyspringmvctiles.dto;
 
+public class ClientDto {
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@Table(name = "clients")
-public class ClientEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     private String firstName;
@@ -23,12 +14,6 @@ public class ClientEntity {
 
     private String tel;
 
-    @OneToMany(mappedBy = "client")
-    private List<PanierEntity> paniers;
-
-    public ClientEntity() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -36,7 +21,6 @@ public class ClientEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -78,12 +62,15 @@ public class ClientEntity {
         this.tel = tel;
     }
 
-    public List<PanierEntity> getPaniers() {
-        return paniers;
+    public ClientDto() {
     }
 
-    public void setPaniers(List<PanierEntity> paniers) {
-        this.paniers = paniers;
+    public ClientDto(Long id, String firstName, String lastName, String email, String password, String tel) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.tel = tel;
     }
-
 }
