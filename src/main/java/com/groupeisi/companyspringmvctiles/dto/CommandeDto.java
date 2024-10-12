@@ -1,6 +1,6 @@
 package com.groupeisi.companyspringmvctiles.dto;
 
-import com.groupeisi.companyspringmvctiles.entities.PanierEntity;
+import com.groupeisi.companyspringmvctiles.dto.PanierDto;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class CommandeDto {
 
     private Date date;
 
-    private PanierEntity panier;
+    private PanierDto panier;
 
     public Long getId() {
         return id;
@@ -28,18 +28,18 @@ public class CommandeDto {
         this.date = date;
     }
 
-    public PanierEntity getPanier() {
+    public PanierDto getPanier() {
         return panier;
     }
 
-    public void setPanier(PanierEntity panier) {
+    public void setPanier(PanierDto panier) {
         this.panier = panier;
     }
 
     public CommandeDto() {
     }
 
-    public CommandeDto(Long id, Date date, PanierEntity panier) {
+    public CommandeDto(Long id, Date date, PanierDto panier) {
         this.id = id;
         this.date = date;
         this.panier = panier;
