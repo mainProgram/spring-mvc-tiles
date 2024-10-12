@@ -54,12 +54,10 @@ public class PanierController {
 
     @GetMapping("/details/{id}")
     public String showDetails(Model model, @PathVariable Long id) {
-        logger.info("L'id: " + id + " - Méthode GET appelée pour afficher le détails");
 
         try {
             Optional<PanierDto> panier = panierService.findById(id);
             model.addAttribute("panier", panier.orElse(null));
-
         } catch (Exception e) {
             logger.error("Erreur lors de la récupération des données", e);
         }
@@ -73,8 +71,7 @@ public class PanierController {
             @RequestParam("products") List<String> products
     ) {
 
-        //logger.debug("Paramètres reçus : productRef={}, quantity={}", client, products);
-
+        logger.debug("Paramètres reçus : productRef={}, quantity={}", client, products);
         Optional<ClientDto> clientOptional = clientService.findById(Long.valueOf(client));
 
         if (clientOptional.isPresent()) {
@@ -84,8 +81,7 @@ public class PanierController {
             panierDto.setDate(new Date());
             panierDto.setClient(clientDto);
             panierDto.setProducts(productService.findAllByRef(products).get());
-            System.out.println(panierDto);
-            //logger.debug("Paramètres reçus : panier={}", panierDto);
+            logger.debug("Paramètres reçus : panier={}", panierDto);
 
             try {
                 panierService.save(panierDto);
@@ -94,7 +90,7 @@ public class PanierController {
                 logger.error("Erreur lors de l'enregistrement du panier", e);
             }
         } else {
-            logger.error("Produit non trouvé avec la référence ");
+            logger.error("Client non trouvé avec l'id ");
         }
 
         return "redirect:/paniers";

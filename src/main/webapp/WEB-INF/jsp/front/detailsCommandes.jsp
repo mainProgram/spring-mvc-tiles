@@ -14,17 +14,18 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Détails du panier</h5>
-                            <p><span class="fw-bold">Id:</span> ${panier.id}</p>
-                            <p><span class="fw-bold">Date de création:</span> ${panier.date}</p>
-                            <p><span class="fw-bold">Client:</span> ${panier.client.firstName} ${panier.client.lastName}</p>
+                        <h5 class="card-title mb-3">Détails de la commande</h5>
+                            <p><span class="fw-bold">Id:</span> ${commande.panier.id}</p>
+                            <p><span class="fw-bold">Date de création:</span> ${commande.date}</p>
+                            <p><span class="fw-bold">Client:</span> ${commande.panier.client.firstName} ${commande.panier.client.lastName}</p>
+                            <p><span class="fw-bold">Panier:</span> ${commande.panier.id} ${commande.panier.date}</p>
                             <p><span class="fw-bold">Produits:</span> </p>
                             <ul>
-                                <c:forEach items="${panier.products}" var="product">
+                                <c:forEach items="${commande.panier.products}" var="product">
                                     <li>${product.name}</li>
                                 </c:forEach>
                             </ul>
-                        <p class="text-end mt-5" ><a href="/companyspringmvctiles/paniers">Retour à la liste</a></p>
+                        <p class="text-end mt-5" ><a href="/companyspringmvctiles/commandes">Retour à la liste</a></p>
                     </div>
                 </div>
             </div>
