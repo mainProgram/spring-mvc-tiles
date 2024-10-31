@@ -29,6 +29,12 @@ public class ProductEntity implements Serializable {
     public ProductEntity() {
     }
 
+    public ProductEntity(String ref, String name, double stock) {
+        this.ref = ref;
+        this.name = name;
+        this.stock = stock;
+    }
+
     public ProductEntity(String ref, String name, double stock, List<Purchases> purchases, List<Sales> sales) {
         this.ref = ref;
         this.name = name;

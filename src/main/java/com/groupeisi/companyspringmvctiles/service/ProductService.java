@@ -17,6 +17,10 @@ public class ProductService implements IProductService {
 
     private static final Logger logger = LoggerFactory.getLogger(PurchasesService.class);
 
+    public void setProductDao(IProductDao productDao) {
+        this.productDao = productDao;
+    }
+
     private IProductDao productDao = new ProductDao();
 
     @Override

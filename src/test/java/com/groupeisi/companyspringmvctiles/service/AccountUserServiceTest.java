@@ -39,7 +39,7 @@ public class AccountUserServiceTest {
 
         when(accountUserDao.login(anyString(), anyString())).thenReturn(userEntity);
 
-        Optional<AccountUserDto> accountUserDto =accountUserService.login("fz@gmail.com", "passer");
+        Optional<AccountUserDto> accountUserDto = accountUserService.login("fz@gmail.com", "passer");
         Assertions.assertTrue(accountUserDto.isPresent());
     }
 
